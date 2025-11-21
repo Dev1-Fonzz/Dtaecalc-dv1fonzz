@@ -1,0 +1,1551 @@
+
+<html lang="ms">
+<head>
+    <meta charset="UTF-8"></meta>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"></meta>
+    <title>Kalkulator Peperiksaan Exam Calculator Malaysia Education</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"></link>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --info: #17a2b8;
+            --light: #ecf0f1;
+            --dark: #34495e;
+            --yellow: #ffeb3b;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 10px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 15px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #1a252f;
+        }
+        
+        .btn-success {
+            background-color: var(--success);
+        }
+        
+        .btn-success:hover {
+            background-color: #27ae60;
+        }
+        
+        .btn-danger {
+            background-color: var(--danger);
+        }
+        
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+        
+        .btn-warning {
+            background-color: var(--warning);
+        }
+        
+        .btn-warning:hover {
+            background-color: #e67e22;
+        }
+        
+        .btn-info {
+            background-color: var(--info);
+        }
+        
+        .btn-info:hover {
+            background-color: #138496;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--light);
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        tr:hover {
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        
+        .section-row {
+            background-color: #f8f9fa;
+        }
+        
+        .result-section {
+            background-color: var(--light);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+        }
+        
+        .grade-A {
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        .grade-B {
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .grade-C {
+            color: #f39c12;
+            font-weight: bold;
+        }
+        
+        .grade-D {
+            color: #e67e22;
+            font-weight: bold;
+        }
+        
+        .grade-E {
+            color: var(--danger);
+            font-weight: bold;
+        }
+        
+        .grade-F {
+            color: #c0392b;
+            font-weight: bold;
+        }
+        
+        .grade-TH {
+            color: #7f8c8d;
+            font-weight: bold;
+        }
+        
+        .flex-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .flex-item {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .fullscreen-mode {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .fullscreen-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .summary-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .input-table input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .yellow-bg {
+            background-color: var(--yellow);
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .filter-section {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+        }
+        
+        .action-cell {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+        
+        .action-cell button {
+            padding: 6px 10px;
+            font-size: 14px;
+        }
+        
+        .log-section {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .log-item {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        @media (max-width: 768px) {
+            .flex-container {
+                flex-direction: column;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            button {
+                width: 100%;
+            }
+            
+            table {
+                font-size: 14px;
+            }
+            
+            th, td {
+                padding: 8px 10px;
+            }
+            
+            .action-cell {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .card {
+                padding: 15px;
+            }
+            
+            header {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+            
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-calculator"></i> Kalkulator Peperiksaan Calculator Exam Education</h1>
+            <p>Sistem Pengiraan Markah Peperiksaan Malaysia Education</p>
+        </header>
+        
+        <div class="card">
+            <h2><i class="fas fa-info-circle"></i> Maklumat Peperiksaan</h2>
+            <div class="flex-container">
+                <div class="flex-item">
+                    <div class="form-group">
+                        <label for="examType"><i class="fas fa-file-alt"></i> Jenis Peperiksaan *Wajib Isi*</label>
+                        <select id="examType">
+                            <option value="">Sila pilih dibawah</option>
+                            <option value="Peperiksaan Awal Tahun">Peperiksaan Awal Tahun</option>
+                            <option value="Peperiksaan Pertengahan Tahun">Peperiksaan Pertengahan Tahun</option>
+                            <option value="Ujian Akhir Sesi Akademik (UASA)">Ujian Akhir Sesi Akademik (UASA)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="age"><i class="fas fa-user"></i> Umur *Sangat Wajib*</label>
+                        <input id="age" max="17" min="7" placeholder="Masukkan umur 7-17 tahun" type="number" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="schoolName"><i class="fas fa-school"></i> Nama Sekolah</label>
+                        <input id="schoolName" placeholder="Masukkan nama sekolah" type="text" />
+                    </div>
+                </div>
+                
+                <div class="flex-item">
+                    <div class="form-group">
+                        <label for="subject"><i class="fas fa-book"></i> Mata Pelajaran</label>
+                        <input id="subject" placeholder="Masukkan mata pelajaran" type="text" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="studentName"><i class="fas fa-user-graduate"></i> Nama Penjawab</label>
+                        <input id="studentName" placeholder="Masukkan nama penjawab" type="text" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="class"><i class="fas fa-chalkboard"></i> Kelas</label>
+                        <input id="class" placeholder="Kelas akan diisi automatik" type="text" />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="testName"><i class="fas fa-pen"></i> Nama Ujian</label>
+                <input id="testName" placeholder="Masukkan nama ujian" type="text" />
+            </div>
+            
+            <div class="form-group">
+                <label for="maxMarks"><i class="fas fa-chart-bar"></i> Jumlah Keseluruhan Markah Maksimum Untuk Ujian *Wajib isi rujuk kertas ujian*</label>
+                <select id="maxMarks">
+                    <option value="100">100</option>
+                    <option value="80">80</option>
+                    <option value="74">74</option>
+                    <option value="70">70</option>
+                    <option value="60">60</option>
+                    <option value="50">50</option>
+                    <option value="40">40</option>
+                    <option value="20">20</option>
+                    <option value="custom">Lain-lain (Isi manual)</option>
+                </select>
+                <input class="hidden" id="customMaxMarks" placeholder="Masukkan markah maksimum" type="number" />
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2><i class="fas fa-calculator"></i> Pengiraan Markah</h2>
+            <table class="input-table">
+                <thead>
+                    <tr>
+                        <th>Bahagian</th>
+                        <th>Bilangan Soalan</th>
+                        <th>Markah Penuh</th>
+                        <th>Markah Diperolehi *Wajib Isi Penting*</th>
+                    </tr>
+                </thead>
+                <tbody id="marksTableBody">
+                    <tr class="section-row">
+                        <td>A/Part1</td>
+                        <td><input class="question-count" min="0" type="number" value="0" /></td>
+                        <td><input class="full-marks" min="0" step="0.5" type="number" value="0" /></td>
+                        <td><input class="obtained-marks" min="0" step="0.5" type="number" value="0" /></td>
+                    </tr>
+                    <tr class="section-row">
+                        <td>B/Part2</td>
+                        <td><input class="question-count" min="0" type="number" value="0" /></td>
+                        <td><input class="full-marks" min="0" step="0.5" type="number" value="0" /></td>
+                        <td><input class="obtained-marks" min="0" step="0.5" type="number" value="0" /></td>
+                    </tr>
+                    <tr class="section-row">
+                        <td>C/Part3</td>
+                        <td><input class="question-count" min="0" type="number" value="0" /></td>
+                        <td><input class="full-marks" min="0" step="0.5" type="number" value="0" /></td>
+                        <td><input class="obtained-marks" min="0" step="0.5" type="number" value="0" /></td>
+                    </tr>
+                    <tr class="section-row">
+                        <td>D/Part4</td>
+                        <td><input class="question-count" min="0" type="number" value="0" /></td>
+                        <td><input class="full-marks" min="0" step="0.5" type="number" value="0" /></td>
+                        <td><input class="obtained-marks" min="0" step="0.5" type="number" value="0" /></td>
+                    </tr>
+                    <tr class="section-row">
+                        <td>E/Part5</td>
+                        <td><input class="question-count" min="0" type="number" value="0" /></td>
+                        <td><input class="full-marks" min="0" step="0.5" type="number" value="0" /></td>
+                        <td><input class="obtained-marks" min="0" step="0.5" type="number" value="0" /></td>
+                    </tr>
+                    <tr class="section-row">
+                        <td>F/Part6</td>
+                        <td><input class="question-count" min="0" type="number" value="0" /></td>
+                        <td><input class="full-marks" min="0" step="0.5" type="number" value="0" /></td>
+                        <td><input class="obtained-marks" min="0" step="0.5" type="number" value="0" /></td>
+                    </tr>
+                    <tr class="section-row">
+                        <td>G/Part7</td>
+                        <td><input class="question-count" min="0" type="number" value="0" /></td>
+                        <td><input class="full-marks" min="0" step="0.5" type="number" value="0" /></td>
+                        <td><input class="obtained-marks" min="0" step="0.5" type="number" value="0" /></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="action-buttons">
+                <button class="btn-secondary" id="addSection"><i class="fas fa-plus"></i> Tambah Bahagian</button>
+                <button class="btn-info" id="undoBtn"><i class="fas fa-undo"></i> Undo</button>
+            </div>
+            
+            <div class="result-section">
+                <h3><i class="fas fa-chart-line"></i> Keputusan</h3>
+                <div class="flex-container">
+                    <div class="flex-item">
+                        <p><strong>Markah Diperolehi:</strong> <span id="totalObtained">0</span></p>
+                        <p><strong>Markah Penuh:</strong> <span class="yellow-bg" id="totalFull">0</span></p>
+                    </div>
+                    <div class="flex-item">
+                        <p><strong>⌛Peratus:</strong> <span id="percentage">0</span>%</p>
+                        <p><strong>⚖️Gred:</strong> <span id="grade">-</span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="log-section">
+                <h4><i class="fas fa-history"></i> Log Perubahan</h4>
+                <div id="logContainer">
+                    <!-- Log items will be added here -->
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="calculateBtn"><i class="fas fa-calculator"></i> Kira Markah</button>
+                <button class="btn-success" id="saveBtn"><i class="fas fa-save"></i> Simpan Keputusan</button>
+                <button class="btn-danger" id="resetBtn"><i class="fas fa-redo"></i> Set Semula</button>
+                <button class="btn-warning" id="fullscreenBtn"><i class="fas fa-expand"></i> Paparan Penuh</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2><i class="fas fa-list-alt"></i> Rekod Keputusan</h2>
+            <div class="flex-container">
+                <div class="flex-item">
+                    <p><strong><i class="fas fa-user-graduate"></i> Nama Penjawab:</strong> <span id="displayName">-</span></p>
+                    <p><strong><i class="fas fa-chalkboard"></i> Kelas / Tingkatan / Darjah:</strong> <span id="displayClass">-</span></p>
+                </div>
+                <div class="flex-item">
+                    <p><strong><i class="fas fa-file-alt"></i> Jenis Ujian:</strong> <span id="displayExamType">-</span></p>
+                    <p><strong><i class="fas fa-calendar"></i> Tarikh:</strong> <span id="displayDate">-</span></p>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h4><i class="fas fa-filter"></i> Filter</h4>
+                <div class="flex-container">
+                    <div class="flex-item">
+                        <label for="filterSubject">Mata Pelajaran</label>
+                        <select id="filterSubject">
+                            <option value="">Semua</option>
+                        </select>
+                    </div>
+                    <div class="flex-item">
+                        <label for="filterGrade">Gred</label>
+                        <select id="filterGrade">
+                            <option value="">Semua</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="TH">TH</option>
+                        </select>
+                    </div>
+                    <div class="flex-item">
+                        <label for="filterExamType">Jenis Ujian</label>
+                        <select id="filterExamType">
+                            <option value="">Semua</option>
+                            <option value="Peperiksaan Awal Tahun">Peperiksaan Awal Tahun</option>
+                            <option value="Peperiksaan Pertengahan Tahun">Peperiksaan Pertengahan Tahun</option>
+                            <option value="Ujian Akhir Sesi Akademik (UASA)">Ujian Akhir Sesi Akademik (UASA)</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn-info" id="applyFilter"><i class="fas fa-check"></i> Gunakan Filter</button>
+                <button class="btn-secondary" id="resetFilter"><i class="fas fa-times"></i> Set Semula Filter</button>
+            </div>
+            
+            <table id="resultsTable">
+                <thead>
+                    <tr>
+                        <th>Bil</th>
+                        <th>Mata Pelajaran</th>
+                        <th>Markah Penuh</th>
+                        <th>Markah Diperolehi</th>
+                        <th>Gred</th>
+                        <th>Tindakan</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsBody">
+                    <!-- Results will be populated here -->
+                </tbody>
+            </table>
+            
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <h4><i class="fas fa-book"></i> Bilangan Mata Pelajaran Terdaftar</h4>
+                    <p id="summarySubjectCount">0</p>
+                </div>
+                <div class="summary-item">
+                    <h4><i class="fas fa-star"></i> Pencapaian Gred Keseluruhan</h4>
+                    <p id="summaryGradeAchievement">-</p>
+                </div>
+                <div class="summary-item">
+                    <h4><i class="fas fa-chart-bar"></i> Jumlah Mata Diperolehi</h4>
+                    <p id="summaryTotalMarks">0</p>
+                </div>
+                <div class="summary-item">
+                    <h4><i class="fas fa-percentage"></i> Peratus</h4>
+                    <p id="summaryPercentage">0%</p>
+                </div>
+                <div class="summary-item">
+                    <h4><i class="fas fa-graduation-cap"></i> Gred Purata Penjawab</h4>
+                    <p id="summaryAverageGrade">-</p>
+                </div>
+                <div class="summary-item">
+                    <h4><i class="fas fa-clipboard-check"></i> Keputusan</h4>
+                    <p id="summaryResult">-</p>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn-success" id="downloadBtn"><i class="fas fa-download"></i> Muat Turun CSV</button>
+                <button class="btn-secondary" id="uploadBtn"><i class="fas fa-upload"></i> Muat Naik Data</button>
+                <input accept=".csv" class="hidden" id="fileInput" type="file" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Mode -->
+    <div class="fullscreen-mode hidden" id="fullscreenMode">
+        <div class="fullscreen-header">
+            <h2>Slip Keputusan Peperiksaan</h2>
+            <button class="btn-danger" id="exitFullscreen"><i class="fas fa-times"></i> Tutup</button>
+        </div>
+        
+        <div class="card">
+            <div class="flex-container">
+                <div class="flex-item">
+                    <p><strong><i class="fas fa-user-graduate"></i> Nama Penjawab:</strong> <span id="fsDisplayName">-</span></p>
+                    <p><strong><i class="fas fa-chalkboard"></i> Kelas / Tingkatan / Darjah:</strong> <span id="fsDisplayClass">-</span></p>
+                    <p><strong><i class="fas fa-school"></i> Nama Sekolah:</strong> <span id="fsDisplaySchool">-</span></p>
+                </div>
+                <div class="flex-item">
+                    <p><strong><i class="fas fa-file-alt"></i> Jenis Ujian:</strong> <span id="fsDisplayExamType">-</span></p>
+                    <p><strong><i class="fas fa-calendar"></i> Tarikh:</strong> <span id="fsDisplayDate">-</span></p>
+                </div>
+            </div>
+            
+            <table id="fsResultsTable">
+                <thead>
+                    <tr>
+                        <th>Bil</th>
+                        <th>Mata Pelajaran</th>
+                        <th>Markah Penuh</th>
+                        <th>Markah Diperolehi</th>
+                        <th>Gred</th>
+                    </tr>
+                </thead>
+                <tbody id="fsResultsBody">
+                    <!-- Results will be populated here -->
+                </tbody>
+            </table>
+            
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <h4><i class="fas fa-book"></i> Bilangan Mata Pelajaran Terdaftar</h4>
+                    <p id="fsSummarySubjectCount">0</p>
+                </div>
+                <div class="summary-item">
+                    <h4><i class="fas fa-star"></i> Pencapaian Gred Keseluruhan</h4>
+                    <p id="fsSummaryGradeAchievement">-</p>
+                </div>
+                <div class="summary-item">
+                    <h4><i class="fas fa-chart-bar"></i> Jumlah Mata Diperolehi</h4>
+                    <p id="fsSummaryTotalMarks">0</p>
+                </div>
+                <div class="summary-item">
+                    <h4><i class="fas fa-percentage"></i> Peratus</h4>
+                    <p id="fsSummaryPercentage">0%</p>
+                </div>
+                <div class="summary-item">
+                    <h4><i class="fas fa-graduation-cap"></i> Gred Purata Penjawab</h4>
+                    <p id="fsSummaryAverageGrade">-</p>
+                </div>
+                <div class="summary-item">
+                    <h4><i class="fas fa-clipboard-check"></i> Keputusan</h4>
+                    <p id="fsSummaryResult">-</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const ageInput = document.getElementById('age');
+            const examTypeSelect = document.getElementById('examType');
+            const classInput = document.getElementById('class');
+            const maxMarksSelect = document.getElementById('maxMarks');
+            const customMaxMarksInput = document.getElementById('customMaxMarks');
+            const calculateBtn = document.getElementById('calculateBtn');
+            const saveBtn = document.getElementById('saveBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const addSectionBtn = document.getElementById('addSection');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const uploadBtn = document.getElementById('uploadBtn');
+            const fileInput = document.getElementById('fileInput');
+            const fullscreenBtn = document.getElementById('fullscreenBtn');
+            const exitFullscreenBtn = document.getElementById('exitFullscreen');
+            const fullscreenMode = document.getElementById('fullscreenMode');
+            const undoBtn = document.getElementById('undoBtn');
+            const applyFilterBtn = document.getElementById('applyFilter');
+            const resetFilterBtn = document.getElementById('resetFilter');
+            const filterSubject = document.getElementById('filterSubject');
+            const filterGrade = document.getElementById('filterGrade');
+            const filterExamType = document.getElementById('filterExamType');
+            const logContainer = document.getElementById('logContainer');
+            
+            // Display elements
+            const totalObtainedSpan = document.getElementById('totalObtained');
+            const totalFullSpan = document.getElementById('totalFull');
+            const percentageSpan = document.getElementById('percentage');
+            const gradeSpan = document.getElementById('grade');
+            const displayNameSpan = document.getElementById('displayName');
+            const displayClassSpan = document.getElementById('displayClass');
+            const displayExamTypeSpan = document.getElementById('displayExamType');
+            const displayDateSpan = document.getElementById('displayDate');
+            const resultsBody = document.getElementById('resultsBody');
+            
+            // Summary elements
+            const summarySubjectCount = document.getElementById('summarySubjectCount');
+            const summaryGradeAchievement = document.getElementById('summaryGradeAchievement');
+            const summaryTotalMarks = document.getElementById('summaryTotalMarks');
+            const summaryPercentage = document.getElementById('summaryPercentage');
+            const summaryAverageGrade = document.getElementById('summaryAverageGrade');
+            const summaryResult = document.getElementById('summaryResult');
+            
+            // Fullscreen elements
+            const fsDisplayName = document.getElementById('fsDisplayName');
+            const fsDisplayClass = document.getElementById('fsDisplayClass');
+            const fsDisplaySchool = document.getElementById('fsDisplaySchool');
+            const fsDisplayExamType = document.getElementById('fsDisplayExamType');
+            const fsDisplayDate = document.getElementById('fsDisplayDate');
+            const fsResultsBody = document.getElementById('fsResultsBody');
+            const fsSummarySubjectCount = document.getElementById('fsSummarySubjectCount');
+            const fsSummaryGradeAchievement = document.getElementById('fsSummaryGradeAchievement');
+            const fsSummaryTotalMarks = document.getElementById('fsSummaryTotalMarks');
+            const fsSummaryPercentage = document.getElementById('fsSummaryPercentage');
+            const fsSummaryAverageGrade = document.getElementById('fsSummaryAverageGrade');
+            const fsSummaryResult = document.getElementById('fsSummaryResult');
+            
+            // Data storage
+            let resultsData = [];
+            let logHistory = [];
+            let currentState = {};
+            
+            // Update date and time
+            function updateDateTime() {
+                const now = new Date();
+                const options = { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                };
+                displayDateSpan.textContent = now.toLocaleDateString('ms-MY', options);
+                fsDisplayDate.textContent = now.toLocaleDateString('ms-MY', options);
+            }
+            
+            // Update class based on age
+            function updateClass() {
+                const age = parseInt(ageInput.value);
+                if (age >= 7 && age <= 12) {
+                    const darjah = age - 6;
+                    classInput.value = `Darjah ${darjah} (Sekolah Rendah)`;
+                } else if (age >= 13 && age <= 17) {
+                    const tingkatan = age - 12;
+                    classInput.value = `Tingkatan ${tingkatan} (Sekolah Menengah)`;
+                } else {
+                    classInput.value = '';
+                }
+            }
+            
+            // Handle custom max marks
+            maxMarksSelect.addEventListener('change', function() {
+                if (this.value === 'custom') {
+                    customMaxMarksInput.classList.remove('hidden');
+                } else {
+                    customMaxMarksInput.classList.add('hidden');
+                }
+            });
+            
+            // Calculate marks and grade
+            function calculateResults() {
+                // Get all marks inputs
+                const obtainedMarksInputs = document.querySelectorAll('.obtained-marks');
+                const fullMarksInputs = document.querySelectorAll('.full-marks');
+                
+                let totalObtained = 0;
+                let totalFull = 0;
+                
+                // Calculate totals
+                obtainedMarksInputs.forEach(input => {
+                    totalObtained += parseFloat(input.value) || 0;
+                });
+                
+                fullMarksInputs.forEach(input => {
+                    totalFull += parseFloat(input.value) || 0;
+                });
+                
+                // Get user-defined max marks
+                let userMaxMarks;
+                if (maxMarksSelect.value === 'custom') {
+                    userMaxMarks = parseFloat(customMaxMarksInput.value) || 100;
+                } else {
+                    userMaxMarks = parseFloat(maxMarksSelect.value) || 100;
+                }
+                
+                // Calculate percentage
+                let percentage;
+                if (userMaxMarks === 100) {
+                    percentage = totalObtained;
+                } else {
+                    percentage = (totalObtained / userMaxMarks) * 100;
+                }
+                
+                // Determine grade
+                const age = parseInt(ageInput.value);
+                const examType = examTypeSelect.value;
+                const grade = determineGrade(percentage, age, examType);
+                
+                // Update display
+                totalObtainedSpan.textContent = totalObtained.toFixed(2);
+                totalFullSpan.textContent = userMaxMarks;
+                percentageSpan.textContent = percentage.toFixed(2);
+                gradeSpan.textContent = grade;
+                
+                // Apply grade color
+                applyGradeColor(gradeSpan, grade);
+                
+                // Add to log
+                addToLog(`Markah dikira: ${totalObtained.toFixed(2)}/${userMaxMarks} (${percentage.toFixed(2)}%) - Gred: ${grade}`);
+            }
+            
+            // Determine grade based on percentage, age and exam type
+            function determineGrade(percentage, age, examType) {
+                // UASA grading system
+                if (examType === 'Ujian Akhir Sesi Akademik (UASA)') {
+                    if (percentage >= 82) return 'A';
+                    if (percentage >= 66) return 'B';
+                    if (percentage >= 50) return 'C';
+                    if (percentage >= 35) return 'D';
+                    if (percentage >= 20) return 'E';
+                    if (percentage >= 0) return 'F';
+                    return 'TH';
+                }
+                
+                // Secondary school upper level (16-17 years)
+                if (age >= 16 && age <= 17) {
+                    if (percentage >= 90) return 'A+';
+                    if (percentage >= 80) return 'A';
+                    if (percentage >= 75) return 'A-';
+                    if (percentage >= 70) return 'B+';
+                    if (percentage >= 65) return 'B';
+                    if (percentage >= 60) return 'C+';
+                    if (percentage >= 50) return 'C';
+                    if (percentage >= 40) return 'D';
+                    if (percentage >= 30) return 'E';
+                    if (percentage >= 1) return 'G';
+                    return 'TH';
+                }
+                
+                // Standard grading for ages 7-15
+                if (percentage >= 80) return 'A';
+                if (percentage >= 65) return 'B';
+                if (percentage >= 50) return 'C';
+                if (percentage >= 40) return 'D';
+                if (percentage >= 0) return 'E';
+                return 'TH';
+            }
+            
+            // Apply color to grade based on value
+            function applyGradeColor(element, grade) {
+                // Remove existing grade classes
+                element.classList.remove('grade-A', 'grade-B', 'grade-C', 'grade-D', 'grade-E', 'grade-F', 'grade-TH');
+                
+                // Add appropriate class
+                if (grade.startsWith('A')) {
+                    element.classList.add('grade-A');
+                } else if (grade.startsWith('B')) {
+                    element.classList.add('grade-B');
+                } else if (grade.startsWith('C')) {
+                    element.classList.add('grade-C');
+                } else if (grade.startsWith('D')) {
+                    element.classList.add('grade-D');
+                } else if (grade.startsWith('E')) {
+                    element.classList.add('grade-E');
+                } else if (grade.startsWith('F')) {
+                    element.classList.add('grade-F');
+                } else if (grade === 'TH' || grade === 'G') {
+                    element.classList.add('grade-TH');
+                }
+            }
+            
+            // Save current result to the table
+            function saveResult() {
+                const studentName = document.getElementById('studentName').value;
+                const schoolName = document.getElementById('schoolName').value;
+                const subject = document.getElementById('subject').value;
+                const totalObtained = totalObtainedSpan.textContent;
+                const totalFull = totalFullSpan.textContent;
+                const grade = gradeSpan.textContent;
+                const examType = examTypeSelect.value;
+                const studentClass = classInput.value;
+                const testName = document.getElementById('testName').value;
+                
+                // Validate required fields
+                if (!studentName || !subject || grade === '-') {
+                    alert('Sila isi semua maklumat dan kira markah sebelum menyimpan.');
+                    return;
+                }
+                
+                // Update display information
+                displayNameSpan.textContent = studentName;
+                displayClassSpan.textContent = studentClass;
+                displayExamTypeSpan.textContent = examType;
+                
+                // Create result object
+                const result = {
+                    id: Date.now(),
+                    studentName,
+                    schoolName,
+                    subject,
+                    totalObtained,
+                    totalFull,
+                    grade,
+                    examType,
+                    studentClass,
+                    testName,
+                    date: new Date().toLocaleDateString('ms-MY')
+                };
+                
+                // Add to data array
+                resultsData.push(result);
+                
+                // Save current state for undo
+                saveState();
+                
+                // Update results table
+                updateResultsTable();
+                
+                // Update summary
+                updateSummary();
+                
+                // Save to localStorage
+                saveToLocalStorage();
+                
+                // Clear form after saving
+                clearForm();
+                
+                // Add to log
+                addToLog(`Keputusan disimpan: ${subject} - ${totalObtained}/${totalFull} - Gred: ${grade}`);
+                
+                alert('Keputusan berjaya disimpan!');
+            }
+            
+            // Update results table
+            function updateResultsTable() {
+                resultsBody.innerHTML = '';
+                
+                resultsData.forEach((result, index) => {
+                    const newRow = document.createElement('tr');
+                    newRow.innerHTML = `
+                        <td>${index + 1}</td>
+                        <td>${result.subject}</td>
+                        <td>${result.totalFull}</td>
+                        <td>${result.totalObtained}</td>
+                        <td class="grade-cell">${result.grade}</td>
+                        <td class="action-cell">
+                            <button class="btn-info info-btn" data-id="${result.id}"><i class="fas fa-info-circle"></i></button>
+                            <button class="btn-warning edit-btn" data-id="${result.id}"><i class="fas fa-edit"></i></button>
+                            <button class="btn-danger delete-btn" data-id="${result.id}"><i class="fas fa-trash"></i></button>
+                            <button class="btn-secondary archive-btn" data-id="${result.id}"><i class="fas fa-archive"></i></button>
+                        </td>
+                    `;
+                    
+                    // Apply grade color to the new cell
+                    const gradeCell = newRow.querySelector('.grade-cell');
+                    applyGradeColor(gradeCell, result.grade);
+                    
+                    resultsBody.appendChild(newRow);
+                });
+                
+                // Update filter options
+                updateFilterOptions();
+                
+                // Add event listeners to action buttons
+                addActionEventListeners();
+            }
+            
+            // Add event listeners to action buttons
+            function addActionEventListeners() {
+                // Info buttons
+                document.querySelectorAll('.info-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = this.getAttribute('data-id');
+                        const result = resultsData.find(r => r.id == id);
+                        showResultInfo(result);
+                    });
+                });
+                
+                // Edit buttons
+                document.querySelectorAll('.edit-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = this.getAttribute('data-id');
+                        const result = resultsData.find(r => r.id == id);
+                        editResult(result);
+                    });
+                });
+                
+                // Delete buttons
+                document.querySelectorAll('.delete-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = this.getAttribute('data-id');
+                        deleteResult(id);
+                    });
+                });
+                
+                // Archive buttons
+                document.querySelectorAll('.archive-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = this.getAttribute('data-id');
+                        archiveResult(id);
+                    });
+                });
+            }
+            
+            // Show result info
+            function showResultInfo(result) {
+                alert(`Maklumat Keputusan:\n\nMata Pelajaran: ${result.subject}\nMarkah: ${result.totalObtained}/${result.totalFull}\nGred: ${result.grade}\nJenis Ujian: ${result.examType}\nTarikh: ${result.date}`);
+            }
+            
+            // Edit result
+            function editResult(result) {
+                // Save current state for undo
+                saveState();
+                
+                // Fill form with result data
+                document.getElementById('studentName').value = result.studentName;
+                document.getElementById('schoolName').value = result.schoolName;
+                document.getElementById('subject').value = result.subject;
+                document.getElementById('examType').value = result.examType;
+                document.getElementById('testName').value = result.testName;
+                document.getElementById('age').value = result.studentClass.includes('Darjah') ? 
+                    parseInt(result.studentClass.split(' ')[1]) + 6 : 
+                    parseInt(result.studentClass.split(' ')[1]) + 12;
+                updateClass();
+                
+                // Remove from data array
+                resultsData = resultsData.filter(r => r.id !== result.id);
+                
+                // Update table and summary
+                updateResultsTable();
+                updateSummary();
+                
+                // Add to log
+                addToLog(`Keputusan diedit: ${result.subject}`);
+            }
+            
+            // Delete result
+            function deleteResult(id) {
+                // Save current state for undo
+                saveState();
+                
+                const result = resultsData.find(r => r.id == id);
+                
+                if (confirm(`Adakah anda pasti ingin memadam keputusan untuk ${result.subject}?`)) {
+                    // Remove from data array
+                    resultsData = resultsData.filter(r => r.id !== id);
+                    
+                    // Update table and summary
+                    updateResultsTable();
+                    updateSummary();
+                    
+                    // Save to localStorage
+                    saveToLocalStorage();
+                    
+                    // Add to log
+                    addToLog(`Keputusan dipadam: ${result.subject}`);
+                }
+            }
+            
+            // Archive result
+            function archiveResult(id) {
+                const result = resultsData.find(r => r.id == id);
+                alert(`Keputusan untuk ${result.subject} telah diarkibkan.`);
+                addToLog(`Keputusan diarkib: ${result.subject}`);
+            }
+            
+            // Update filter options
+            function updateFilterOptions() {
+                // Get unique subjects
+                const subjects = [...new Set(resultsData.map(r => r.subject))];
+                
+                // Update subject filter
+                filterSubject.innerHTML = '<option value="">Semua</option>';
+                subjects.forEach(subject => {
+                    const option = document.createElement('option');
+                    option.value = subject;
+                    option.textContent = subject;
+                    filterSubject.appendChild(option);
+                });
+            }
+            
+            // Apply filter
+            function applyFilter() {
+                const subjectFilter = filterSubject.value;
+                const gradeFilter = filterGrade.value;
+                const examTypeFilter = filterExamType.value;
+                
+                const filteredData = resultsData.filter(result => {
+                    return (!subjectFilter || result.subject === subjectFilter) &&
+                           (!gradeFilter || result.grade === gradeFilter) &&
+                           (!examTypeFilter || result.examType === examTypeFilter);
+                });
+                
+                // Update results table with filtered data
+                resultsBody.innerHTML = '';
+                
+                filteredData.forEach((result, index) => {
+                    const newRow = document.createElement('tr');
+                    newRow.innerHTML = `
+                        <td>${index + 1}</td>
+                        <td>${result.subject}</td>
+                        <td>${result.totalFull}</td>
+                        <td>${result.totalObtained}</td>
+                        <td class="grade-cell">${result.grade}</td>
+                        <td class="action-cell">
+                            <button class="btn-info info-btn" data-id="${result.id}"><i class="fas fa-info-circle"></i></button>
+                            <button class="btn-warning edit-btn" data-id="${result.id}"><i class="fas fa-edit"></i></button>
+                            <button class="btn-danger delete-btn" data-id="${result.id}"><i class="fas fa-trash"></i></button>
+                            <button class="btn-secondary archive-btn" data-id="${result.id}"><i class="fas fa-archive"></i></button>
+                        </td>
+                    `;
+                    
+                    // Apply grade color to the new cell
+                    const gradeCell = newRow.querySelector('.grade-cell');
+                    applyGradeColor(gradeCell, result.grade);
+                    
+                    resultsBody.appendChild(newRow);
+                });
+                
+                // Add event listeners to action buttons
+                addActionEventListeners();
+                
+                // Add to log
+                addToLog(`Filter digunakan: Mata Pelajaran=${subjectFilter || 'Semua'}, Gred=${gradeFilter || 'Semua'}, Jenis Ujian=${examTypeFilter || 'Semua'}`);
+            }
+            
+            // Reset filter
+            function resetFilter() {
+                filterSubject.value = '';
+                filterGrade.value = '';
+                filterExamType.value = '';
+                updateResultsTable();
+                addToLog('Filter diset semula');
+            }
+            
+            // Update summary section
+            function updateSummary() {
+                const subjectCount = resultsData.length;
+                
+                if (subjectCount === 0) {
+                    resetSummary();
+                    return;
+                }
+                
+                // Calculate totals
+                let totalMarksObtained = 0;
+                let totalMarksFull = 0;
+                let allGrades = [];
+                
+                resultsData.forEach(result => {
+                    totalMarksObtained += parseFloat(result.totalObtained);
+                    totalMarksFull += parseFloat(result.totalFull);
+                    allGrades.push(result.grade);
+                });
+                
+                const averagePercentage = (totalMarksObtained / totalMarksFull) * 100;
+                const averageGrade = determineGrade(averagePercentage, parseInt(ageInput.value), examTypeSelect.value);
+                
+                // Update summary display
+                summarySubjectCount.textContent = subjectCount;
+                summaryGradeAchievement.textContent = allGrades.join(', ');
+                summaryTotalMarks.textContent = totalMarksObtained.toFixed(2);
+                summaryPercentage.textContent = averagePercentage.toFixed(2) + '%';
+                summaryAverageGrade.textContent = averageGrade;
+                summaryResult.textContent = averagePercentage >= 50 ? 'LULUS' : 'GAGAL';
+                
+                // Apply grade color to average grade
+                applyGradeColor(summaryAverageGrade, averageGrade);
+                
+                // Update fullscreen summary
+                updateFullscreenSummary();
+            }
+            
+            // Reset summary section
+            function resetSummary() {
+                summarySubjectCount.textContent = '0';
+                summaryGradeAchievement.textContent = '-';
+                summaryTotalMarks.textContent = '0';
+                summaryPercentage.textContent = '0%';
+                summaryAverageGrade.textContent = '-';
+                summaryResult.textContent = '-';
+                
+                // Remove grade color
+                summaryAverageGrade.classList.remove('grade-A', 'grade-B', 'grade-C', 'grade-D', 'grade-E', 'grade-F', 'grade-TH');
+            }
+            
+            // Update fullscreen summary
+            function updateFullscreenSummary() {
+                fsSummarySubjectCount.textContent = summarySubjectCount.textContent;
+                fsSummaryGradeAchievement.textContent = summaryGradeAchievement.textContent;
+                fsSummaryTotalMarks.textContent = summaryTotalMarks.textContent;
+                fsSummaryPercentage.textContent = summaryPercentage.textContent;
+                fsSummaryAverageGrade.textContent = summaryAverageGrade.textContent;
+                fsSummaryResult.textContent = summaryResult.textContent;
+                
+                // Apply grade color to average grade
+                applyGradeColor(fsSummaryAverageGrade, fsSummaryAverageGrade.textContent);
+            }
+            
+            // Clear form after saving
+            function clearForm() {
+                document.getElementById('studentName').value = '';
+                document.getElementById('schoolName').value = '';
+                document.getElementById('subject').value = '';
+                document.getElementById('testName').value = '';
+                document.getElementById('age').value = '';
+                document.getElementById('examType').value = '';
+                document.getElementById('maxMarks').value = '100';
+                customMaxMarksInput.classList.add('hidden');
+                
+                // Reset marks table
+                document.querySelectorAll('.question-count').forEach(input => {
+                    input.value = 0;
+                });
+                
+                document.querySelectorAll('.full-marks').forEach(input => {
+                    input.value = 0;
+                });
+                
+                document.querySelectorAll('.obtained-marks').forEach(input => {
+                    input.value = 0;
+                });
+                
+                // Reset results display
+                totalObtainedSpan.textContent = '0';
+                totalFullSpan.textContent = '0';
+                percentageSpan.textContent = '0';
+                gradeSpan.textContent = '-';
+                gradeSpan.className = '';
+            }
+            
+            // Reset form completely
+            function resetForm() {
+                clearForm();
+                classInput.value = '';
+                
+                // Save current state for undo
+                saveState();
+                
+                // Add to log
+                addToLog('Borang diset semula');
+            }
+            
+            // Add new section
+            function addSection() {
+                const tableBody = document.getElementById('marksTableBody');
+                const sectionCount = tableBody.children.length + 1;
+                const sectionLetter = String.fromCharCode(64 + sectionCount); // A, B, C, etc.
+                
+                const newRow = document.createElement('tr');
+                newRow.className = 'section-row';
+                newRow.innerHTML = `
+                    <td>Bahagian ${sectionLetter}</td>
+                    <td><input type="number" class="question-count" min="0" value="0"></td>
+                    <td><input type="number" class="full-marks" min="0" value="0" step="0.5"></td>
+                    <td><input type="number" class="obtained-marks" min="0" value="0" step="0.5"></td>
+                `;
+                
+                tableBody.appendChild(newRow);
+                
+                // Add to log
+                addToLog(`Bahagian ${sectionLetter} ditambah`);
+            }
+            
+            // Save current state for undo
+            function saveState() {
+                currentState = {
+                    resultsData: JSON.parse(JSON.stringify(resultsData)),
+                    timestamp: new Date().toLocaleTimeString()
+                };
+            }
+            
+            // Undo last action
+            function undoAction() {
+                if (currentState.resultsData) {
+                    resultsData = currentState.resultsData;
+                    updateResultsTable();
+                    updateSummary();
+                    saveToLocalStorage();
+                    addToLog(`Tindakan dibatalkan (keadaan ${currentState.timestamp})`);
+                } else {
+                    alert('Tiada tindakan sebelumnya untuk dibatalkan.');
+                }
+            }
+            
+            // Add to log
+            function addToLog(message) {
+                const now = new Date();
+                const timestamp = now.toLocaleTimeString();
+                
+                const logItem = document.createElement('div');
+                logItem.className = 'log-item';
+                logItem.innerHTML = `
+                    <span>${message}</span>
+                    <span>${timestamp}</span>
+                `;
+                
+                logContainer.prepend(logItem);
+                
+                // Keep only last 10 log items
+                if (logContainer.children.length > 10) {
+                    logContainer.removeChild(logContainer.lastChild);
+                }
+            }
+            
+            // Save data to localStorage
+            function saveToLocalStorage() {
+                const data = {
+                    studentName: displayNameSpan.textContent,
+                    studentClass: displayClassSpan.textContent,
+                    examType: displayExamTypeSpan.textContent,
+                    resultsData: resultsData
+                };
+                
+                localStorage.setItem('examResults', JSON.stringify(data));
+            }
+            
+            // Load data from localStorage
+            function loadFromLocalStorage() {
+                const savedData = localStorage.getItem('examResults');
+                if (savedData) {
+                    const data = JSON.parse(savedData);
+                    
+                    displayNameSpan.textContent = data.studentName || '-';
+                    displayClassSpan.textContent = data.studentClass || '-';
+                    displayExamTypeSpan.textContent = data.examType || '-';
+                    
+                    resultsData = data.resultsData || [];
+                    
+                    updateResultsTable();
+                    updateSummary();
+                }
+            }
+            
+            // Export to CSV
+            function exportToCSV() {
+                if (resultsData.length === 0) {
+                    alert('Tiada data untuk dieksport.');
+                    return;
+                }
+                
+                // Prepare CSV content
+                let csvContent = "Bil,Mata Pelajaran,Markah Penuh,Markah Diperolehi,Gred,Jenis Ujian,Tarikh\n";
+                
+                resultsData.forEach((result, index) => {
+                    const rowData = [
+                        index + 1,
+                        result.subject,
+                        result.totalFull,
+                        result.totalObtained,
+                        result.grade,
+                        result.examType,
+                        result.date
+                    ];
+                    
+                    csvContent += rowData.map(field => `"${field}"`).join(',') + '\n';
+                });
+                
+                // Create and download CSV file
+                const link = document.createElement('a');
+                link.download = 'keputusan-peperiksaan.csv';
+                link.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
+                link.click();
+                
+                // Add to log
+                addToLog('Data dieksport ke CSV');
+            }
+            
+            // Upload data from file
+            function uploadData() {
+                fileInput.click();
+            }
+            
+            // Handle file selection for upload
+            function handleFileUpload(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    try {
+                        const csvText = event.target.result;
+                        processCSVData(csvText);
+                        alert('Data berjaya dimuat naik!');
+                        addToLog('Data dimuat naik dari CSV');
+                    } catch (error) {
+                        alert('Ralat: Fail tidak sah. Sila pilih fail CSV yang betul.');
+                    }
+                };
+                reader.readAsText(file);
+                
+                // Reset file input
+                e.target.value = '';
+            }
+            
+            // Process CSV data
+            function processCSVData(csvText) {
+                const lines = csvText.split('\n');
+                // Skip header row
+                for (let i = 1; i < lines.length; i++) {
+                    if (lines[i].trim() === '') continue;
+                    
+                    const values = parseCSVLine(lines[i]);
+                    if (values.length < 5) continue;
+                    
+                    const rowData = {
+                        id: Date.now() + i,
+                        subject: values[1],
+                        totalFull: values[2],
+                        totalObtained: values[3],
+                        grade: values[4],
+                        examType: values[5] || 'Tidak Dinyatakan',
+                        date: values[6] || new Date().toLocaleDateString('ms-MY')
+                    };
+                    
+                    // Add to data array
+                    resultsData.push(rowData);
+                }
+                
+                updateResultsTable();
+                updateSummary();
+                saveToLocalStorage();
+            }
+            
+            // Parse CSV line
+            function parseCSVLine(line) {
+                const result = [];
+                let inQuotes = false;
+                let currentField = '';
+                
+                for (let i = 0; i < line.length; i++) {
+                    const char = line[i];
+                    
+                    if (char === '"') {
+                        inQuotes = !inQuotes;
+                    } else if (char === ',' && !inQuotes) {
+                        result.push(currentField);
+                        currentField = '';
+                    } else {
+                        currentField += char;
+                    }
+                }
+                
+                result.push(currentField);
+                return result;
+            }
+            
+            // Enter fullscreen mode
+            function enterFullscreen() {
+                // Update fullscreen display
+                fsDisplayName.textContent = displayNameSpan.textContent;
+                fsDisplayClass.textContent = displayClassSpan.textContent;
+                fsDisplaySchool.textContent = document.getElementById('schoolName').value || '-';
+                fsDisplayExamType.textContent = displayExamTypeSpan.textContent;
+                
+                // Copy results table to fullscreen
+                fsResultsBody.innerHTML = '';
+                resultsData.forEach((result, index) => {
+                    const newRow = document.createElement('tr');
+                    newRow.innerHTML = `
+                        <td>${index + 1}</td>
+                        <td>${result.subject}</td>
+                        <td>${result.totalFull}</td>
+                        <td>${result.totalObtained}</td>
+                        <td class="grade-cell">${result.grade}</td>
+                    `;
+                    
+                    // Apply grade color to the new cell
+                    const gradeCell = newRow.querySelector('.grade-cell');
+                    applyGradeColor(gradeCell, result.grade);
+                    
+                    fsResultsBody.appendChild(newRow);
+                });
+                
+                // Update fullscreen summary
+                updateFullscreenSummary();
+                
+                // Show fullscreen mode
+                fullscreenMode.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                
+                // Add to log
+                addToLog('Mod paparan penuh diaktifkan');
+            }
+            
+            // Exit fullscreen mode
+            function exitFullscreen() {
+                fullscreenMode.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                addToLog('Mod paparan penuh ditutup');
+            }
+            
+            // Event listeners
+            ageInput.addEventListener('input', updateClass);
+            calculateBtn.addEventListener('click', calculateResults);
+            saveBtn.addEventListener('click', saveResult);
+            resetBtn.addEventListener('click', resetForm);
+            addSectionBtn.addEventListener('click', addSection);
+            downloadBtn.addEventListener('click', exportToCSV);
+            uploadBtn.addEventListener('click', uploadData);
+            fileInput.addEventListener('change', handleFileUpload);
+            fullscreenBtn.addEventListener('click', enterFullscreen);
+            exitFullscreenBtn.addEventListener('click', exitFullscreen);
+            undoBtn.addEventListener('click', undoAction);
+            applyFilterBtn.addEventListener('click', applyFilter);
+            resetFilterBtn.addEventListener('click', resetFilter);
+            
+            // Initialize
+            updateDateTime();
+            loadFromLocalStorage();
+            saveState();
+            
+            // Update time every minute
+            setInterval(updateDateTime, 60000);
+        });
+    </script>
+</body>
+</html>
